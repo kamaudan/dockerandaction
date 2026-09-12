@@ -21,13 +21,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v7
+    - name: Show files
+      run: |
+         pwd
+         ls -la
+         find . -name pom.xml
     - name: Set up JDK 25
       uses: actions/setup-java@v6
       with:
         java-version: '25'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven
+    - name: Build
+      working-directory: dockerandaction
       run: mvn clean package
 
     
